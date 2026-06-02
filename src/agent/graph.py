@@ -75,8 +75,11 @@ FINAL ANSWER:
 - CASE B: short clarification listing only missing fields.
 - CASE C success:
   - Respond in Vietnamese with a one-line confirmation.
-  - If the user's message clearly mixes English and Vietnamese terms, add a brief Vietnamese acknowledgement like "Đã hiểu yêu cầu song ngữ." (still reply only in Vietnamese).
-  - Then output a VALID JSON object wrapped in a ```json code block. The JSON must include: order_id, customer (object with name, phone, email, shipping_address), items (array of objects with name, quantity), discount_rate, final_total, save_path.
+  - If the user's message includes English ordering phrases (e.g., "create order", "ship to", "phone", "email", "items"), add a brief Vietnamese acknowledgement like "Đã hiểu yêu cầu song ngữ." (still reply only in Vietnamese).
+  - Then output a VALID JSON object wrapped in a ```json code block. Use this structure (example format):
+    ```json
+    {{"order_id":"...","customer":{{"name":"...","phone":"...","email":"...","shipping_address":"..."}},"items":[{{"name":"...","quantity":1}}],"discount_rate":0.1,"final_total":123,"save_path":"..."}}
+    ```
 """.strip()
 
 
