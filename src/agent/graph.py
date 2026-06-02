@@ -56,7 +56,8 @@ TOOL SEQUENCE FOR CASE C (follow exactly, do NOT skip any step):
 
 STEP 1: Call `list_products` with query containing ALL product names from the request in ONE call. Example: query="ASUS ROG Zephyrus G14 Logitech Pebble 2 M350s LG UltraGear 27GP850-B". Set limit=20. Do NOT call list_products multiple times.
 
-STEP 2: Call `get_product_details` with ALL product_ids found in step 1. Then CHECK STOCK: if any product's stock < requested quantity → STOP IMMEDIATELY, tell customer which item has insufficient stock, and ask to adjust the quantity. Do NOT call `get_discount`, `calculate_order_totals`, or `save_order`.
+STEP 2: Call `get_product_details` with ALL product_ids found in step 1. Then CHECK STOCK: if any product's stock < requested quantity → STOP IMMEDIATELY, tell customer which item has insufficient stock, and ask to adjust the quantity.
+Do NOT call `get_discount`, `calculate_order_totals`, or `save_order`.
 
 STEP 3: Call `get_discount` with seed_hint = customer email.
 
@@ -75,7 +76,7 @@ FINAL ANSWER:
 - CASE C success:
   - Respond in Vietnamese with a one-line confirmation.
   - If the user mixes English and Vietnamese, add a brief acknowledgement like "Đã hiểu yêu cầu song ngữ."
-  - Then output a compact VALID JSON object in a ```json code block (single line) with keys: order_id, customer (name, phone, email, shipping_address), items (name, quantity), discount_rate, final_total, save_path.
+  - Then output a compact VALID JSON object wrapped in a ```json code block; the JSON content must be minified on a single line with keys: order_id, customer (name, phone, email, shipping_address), items (name, quantity), discount_rate, final_total, save_path.
 """.strip()
 
 
