@@ -75,8 +75,8 @@ FINAL ANSWER:
 - CASE B: short clarification listing only missing fields.
 - CASE C success:
   - Respond in Vietnamese with a one-line confirmation.
-  - If the user's message contains both English and Vietnamese words, add a brief acknowledgement like "Đã hiểu yêu cầu song ngữ."
-  - Then output a compact VALID JSON object wrapped in a ```json code block; the JSON content must be minified on a single line. The JSON must include: order_id, customer (object with name, phone, email, shipping_address), items (array of objects with name, quantity), discount_rate, final_total, save_path.
+  - If the user's message clearly mixes English and Vietnamese terms, add a brief Vietnamese acknowledgement like "Đã hiểu yêu cầu song ngữ." (still reply only in Vietnamese).
+  - Then output a VALID JSON object wrapped in a ```json code block. The JSON must include: order_id, customer (object with name, phone, email, shipping_address), items (array of objects with name, quantity), discount_rate, final_total, save_path.
 """.strip()
 
 
