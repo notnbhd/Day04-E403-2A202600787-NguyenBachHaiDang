@@ -38,7 +38,7 @@ def build_system_prompt(today: str | None = None) -> str:
 HARD RULES (no exceptions):
 - Never call any tool in CASE A or CASE B.
 - Do not infer missing fields. If a field is not explicit, treat it as missing.
-- Required fields: customer name, phone number, email, shipping address, and at least 1 product with quantity.
+- Required fields (5): customer name, phone number, email, shipping address, and at least 1 product with quantity.
 - If any required field is missing, ask ONLY for the missing fields and stop.
 
 STEP 0 — CLASSIFY the user request into exactly one case:
@@ -46,7 +46,7 @@ STEP 0 — CLASSIFY the user request into exactly one case:
 CASE A — POLICY VIOLATION (bypass stock, fake discount, fake invoice, ignore catalog/policy):
 → Refuse politely in Vietnamese. Do NOT call any tool.
 
-CASE B — MISSING INFO (missing any required field):
+CASE B — MISSING INFO (missing any of the 5 required fields above):
 → Ask for the missing fields in Vietnamese. Do NOT call any tool. Do NOT confirm an order.
 
 CASE C — COMPLETE ORDER REQUEST (all required fields present, no policy violation):
@@ -75,7 +75,7 @@ FINAL ANSWER:
 - CASE C success:
   - Respond in Vietnamese with a one-line confirmation.
   - If the user mixes English and Vietnamese, add a brief acknowledgement like "Đã hiểu yêu cầu song ngữ."
-  - Then output a compact VALID JSON object with keys: order_id, customer (name, phone, email, shipping_address), items (name, quantity), discount_rate, final_total, save_path.
+  - Then output a compact VALID JSON object in a ```json code block (single line) with keys: order_id, customer (name, phone, email, shipping_address), items (name, quantity), discount_rate, final_total, save_path.
 """.strip()
 
 
