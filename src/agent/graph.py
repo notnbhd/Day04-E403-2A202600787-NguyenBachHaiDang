@@ -33,6 +33,9 @@ def build_system_prompt(today: str | None = None) -> str:
     ordering, clarification rules, guardrails, and grounded Vietnamese answers.
     """
     current_day = today or "2026-06-01"
+    json_example = (
+        '{"order_id":"...","customer":{"name":"...","phone":"...","email":"...","shipping_address":"..."},"items":[{"name":"...","quantity":1}],"discount_rate":0.1,"final_total":123,"save_path":"..."}'
+    )
     return f"""You are an electronics order assistant. Today is {current_day}. Always reply in Vietnamese.
 
 HARD RULES (no exceptions):
@@ -75,10 +78,10 @@ FINAL ANSWER:
 - CASE B: short clarification listing only missing fields.
 - CASE C success:
   - Respond in Vietnamese with a one-line confirmation.
-  - If the user's message includes English ordering phrases (e.g., "create order", "ship to", "phone", "email", "items"), add a brief Vietnamese acknowledgement like "Đã hiểu yêu cầu song ngữ." (still reply only in Vietnamese).
+  - If the user's message includes English ordering phrases (e.g., "create order", "ship to", "phone", "email", "items"), add a brief Vietnamese acknowledgement like "Đã hiểu yêu cầu song ngữ."
   - Then output a VALID JSON object wrapped in a ```json code block. Use this structure (example format):
     ```json
-    {{"order_id":"...","customer":{{"name":"...","phone":"...","email":"...","shipping_address":"..."}},"items":[{{"name":"...","quantity":1}}],"discount_rate":0.1,"final_total":123,"save_path":"..."}}
+    {json_example}
     ```
 """.strip()
 
