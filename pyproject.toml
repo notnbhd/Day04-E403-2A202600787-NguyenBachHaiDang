@@ -12,6 +12,7 @@ dependencies = [
   "langchain-ollama>=0.3.0",
   "pydantic>=2.8.0",
   "python-dotenv>=1.0.1",
+  "langchain-openai>=1.2.2",
 ]
 
 [project.optional-dependencies]

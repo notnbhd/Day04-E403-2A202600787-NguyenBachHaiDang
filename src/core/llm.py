@@ -47,8 +47,19 @@ def build_chat_model(
             model=model_name or os.getenv("OLLAMA_MODEL", "qwen3.5:3b"),
             base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434"),
             temperature=temperature,
+            num_ctx=16384,
+            reasoning=False,
         )
-    raise ValueError("This lab supports only the `google` and `ollama` providers.")
+    if provider == "openrouter":
+        from langchain_openai import ChatOpenAI
+
+        return ChatOpenAI(
+            model=model_name or os.getenv("OPENROUTER_MODEL", "openai/gpt-4o-mini"),
+            openai_api_key=os.getenv("OPENROUTER_API_KEY", ""),
+            openai_api_base="https://openrouter.ai/api/v1",
+            temperature=temperature,
+        )
+    raise ValueError("This lab supports the `google`, `ollama`, and `openrouter` providers.")
 
 
 def extract_json_object(raw: Any) -> dict[str, Any]:

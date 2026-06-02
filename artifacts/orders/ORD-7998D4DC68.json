@@ -1,0 +1,45 @@
+{
+  "order_id": "ORD-7998D4DC68",
+  "created_at": "2026-06-01",
+  "status": "confirmed",
+  "customer": {
+    "name": "Bảo Admin",
+    "phone": "0907008899",
+    "email": "bao.admin@example.com",
+    "shipping_address": "88 Lý Tự Trọng, Quận 1, TP.HCM"
+  },
+  "items": [
+    {
+      "product_id": "DK-001",
+      "sku": "ANK-563-DOCK",
+      "name": "Anker 563 USB-C Dock",
+      "category": "dock",
+      "quantity": 1,
+      "unit_price": 4990000,
+      "line_total": 4990000
+    },
+    {
+      "product_id": "MN-004",
+      "sku": "SAM-VFS6-34",
+      "name": "Samsung ViewFinity S6 34",
+      "category": "monitor",
+      "quantity": 4,
+      "unit_price": 12990000,
+      "line_total": 51960000
+    }
+  ],
+  "pricing": {
+    "currency": "VND",
+    "subtotal": 56950000,
+    "discount_rate": 0.1,
+    "discount_amount": 5695000,
+    "final_total": 51255000
+  },
+  "discount": {
+    "campaign_code": "FLASH-10",
+    "customer_tier": "standard"
+  },
+  "notes": "",
+  "save_path": "artifacts/orders/ORD-7998D4DC68.json",
+  "source": "llm-order-agent"
+}
